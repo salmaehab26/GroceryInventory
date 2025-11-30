@@ -20,36 +20,36 @@ import com.example.groceryinventory.ui.theme.PaddingValues
 import com.example.groceryinventory.ui.theme.RadiusValues
 import com.example.groceryinventory.ui.theme.SizeValues
 
-@Composable
-fun GreenOutlinedButton(
-    onClick: () -> Unit,
-    text: String,
-    image: Int
-) {
-
-    Box(
-        modifier = Modifier
-            .width(80.dp)
-            .border(
-                BorderStroke(1.dp, Green),
-                shape = RoundedCornerShape(RadiusValues.medium)
-            )
-            .clickable(onClick = onClick)
-            .padding(vertical = PaddingValues.xs),
-        contentAlignment = Alignment.Center
-    ) {
-        Row {
-            Image(
-                painter = painterResource(id = image),
-                contentDescription = "Arrow",
-                modifier = Modifier.size(SizeValues.iconSmall)
-            )
-            Text(
-                text = text,
-                color = Green,
-                fontSize = medium,
-            )
-        }
-
-    }
-}
+//@Composable
+//fun GreenOutlinedButton(
+//    onClick: () -> Unit,
+//    text: String,
+//    image: Int
+//) {
+//
+//    Box(
+//        modifier = Modifier
+//            .width(80.dp)
+//            .border(
+//                BorderStroke(1.dp, Green),
+//                shape = RoundedCornerShape(RadiusValues.medium)
+//            )
+//            .clickable(onClick = onClick)
+//            .padding(vertical = PaddingValues.xs),
+//        contentAlignment = Alignment.Center
+//    ) {
+//        Row {
+//            Image(
+//                painter = painterResource(id = image),
+//                contentDescription = "Arrow",
+//                modifier = Modifier.size(SizeValues.iconSmall)
+//            )
+//            Text(
+//                text = text,
+//                color = Green,
+//                fontSize = medium,
+//            )
+//        }
+//
+//    }
+//}

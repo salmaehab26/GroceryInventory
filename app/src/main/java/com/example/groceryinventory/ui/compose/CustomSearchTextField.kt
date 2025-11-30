@@ -30,7 +30,7 @@ fun CustomSearchTextField(
         placeholder = { Text("Search groceries…") },
         modifier = Modifier
             .height(50.dp)
-            .width(200.dp),
+            .width(350.dp),
         leadingIcon = {
             Icon(
                 painter = painterResource(id = R.drawable.search),
