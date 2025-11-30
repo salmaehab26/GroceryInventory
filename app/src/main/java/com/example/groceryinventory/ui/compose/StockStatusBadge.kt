@@ -40,20 +40,20 @@ fun StockStatusBadge(status: StockStatus) {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .background(LightGreen, RoundedCornerShape(12.dp))
-            .padding(horizontal = 12.dp, vertical = 7.dp)
+            .padding(horizontal = 12.dp, vertical = 5.dp)
             .width(100.dp)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.warning),
+            painter = painterResource(id =image),
             contentDescription = "Warning",
             modifier = Modifier.size(20.dp)
         )
         Spacer(modifier = Modifier.width(4.dp))
         Text(
-            text = "Warning",
-            color = Green,
+            text = text,
+            color = color,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp
+            fontSize = 18.sp
         )
     }
 }

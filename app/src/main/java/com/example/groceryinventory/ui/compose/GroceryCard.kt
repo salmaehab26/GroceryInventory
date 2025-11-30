@@ -1,26 +1,22 @@
 package com.example.groceryinventory.ui.compose
 
-import ads_mobile_sdk.id
-import android.hardware.biometrics.BiometricManager
+import ConsumptionLineChart
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.DividerDefaults
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
@@ -32,7 +28,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.groceryinventory.R
 import com.example.groceryinventory.domain.model.Product
 import com.example.groceryinventory.domain.model.StockStatus
@@ -47,29 +42,15 @@ import com.example.groceryinventory.ui.theme.SizeValues
 @Composable
 fun GroceryCard(item: Product) {
     Card(
-        elevation = CardDefaults.cardElevation(PaddingValues.small),
+        elevation = CardDefaults.cardElevation(PaddingValues.xs),
         colors = CardDefaults.cardColors(containerColor = White),
         shape = RoundedCornerShape(RadiusValues.xLarge),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
-            modifier = Modifier.padding(PaddingValues.large),
+            modifier = Modifier.padding(PaddingValues.xlarge),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Green, RoundedCornerShape(RadiusValues.large))
-                    .padding(vertical = PaddingValues.medium),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = item.name,
-                    fontSize = FontSizes.large,
-                    fontWeight = FontWeight.Bold,
-                    color = White
-                )
-            }
 
             Spacer(modifier = Modifier.height(PaddingValues.medium))
 
@@ -96,14 +77,21 @@ fun GroceryCard(item: Product) {
             Row(
             ) {
                 Column(modifier = Modifier.weight(1f)) {
+
+                    Text(
+                    text = item.name,
+                    fontSize = FontSizes.xLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = Green
+                )
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
                             painter = painterResource(id = R.drawable.packages),
                             contentDescription = "Qty Avail",
-                            modifier = Modifier.size(SizeValues.iconLarge)
+                            modifier = Modifier.size(SizeValues.iconMedium)
                         )
 
-                        Spacer(modifier = Modifier.width(PaddingValues.small))
+                        Spacer(modifier = Modifier.width(PaddingValues.xs))
 
                         Text(
                             "Qty Avail: ${item.remainingQuantity}",
@@ -111,7 +99,7 @@ fun GroceryCard(item: Product) {
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(PaddingValues.small))
+                    Spacer(modifier = Modifier.height(PaddingValues.xs))
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
@@ -120,13 +108,16 @@ fun GroceryCard(item: Product) {
                             modifier = Modifier.size(SizeValues.iconMedium)
                         )
 
-                        Spacer(modifier = Modifier.width(PaddingValues.small))
+                        Spacer(modifier = Modifier.width(PaddingValues.xs))
 
                         Text(
                             "Total Qty: ${item.totalQuantity}",
                             fontSize = FontSizes.medium
                         )
                     }
+                    Spacer(modifier = Modifier.height(PaddingValues.xs))
+
+
                 }
                 VerticalDivider(
                     thickness = DividerDefaults.Thickness,
@@ -134,76 +125,46 @@ fun GroceryCard(item: Product) {
                     modifier = Modifier.height(SizeValues.dividerHeight)
                 )
 
-                Spacer(modifier = Modifier.width(PaddingValues.large))
+                Spacer(modifier = Modifier.width(PaddingValues.xlarge))
 
                 ConsumptionLineChart(item.last7DaysSales)
 
             }
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start, modifier = Modifier.fillMaxWidth()) {
+                Image(
+                    painter = painterResource(id = R.drawable.predictive_analysis),
+                    contentDescription = "Predictive", modifier = Modifier.size(SizeValues.iconMedium)
+                )
 
-            Spacer(modifier = Modifier.height(PaddingValues.small))
+                Spacer(modifier = Modifier.width(PaddingValues.xs))
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color(0xFFF5F5F5), RoundedCornerShape(RadiusValues.large))
-                    .padding(PaddingValues.medium)
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Image(
-                        painter = painterResource(id = R.drawable.predictive_analysis),
-                        contentDescription = "Predictive"
-                    )
 
-                    Spacer(modifier = Modifier.width(PaddingValues.small))
-
-                    Text(
-                        text = "Predicted next day consumption: ${item.predictedNextDay}",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = FontSizes.medium
-                    )
-                }
-            }
+            Text(
+                text = "Predict tomorrow selling: ${item.predictedNextDay}",
+                fontSize = FontSizes.medium
+            )
+        }
         }
     }
 }
 
 
+
+
+@Preview(showBackground = true)
 @Composable
-fun ConsumptionLineChart(data: List<Int>) {
-    Row(verticalAlignment = Alignment.Bottom) {
-        data.forEachIndexed { idx, value ->
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("$value", fontSize = FontSizes.small , color = Green)
-                Box(
-                    modifier = Modifier
-                        .width(PaddingValues.medium)
-                        .height((value * 10).dp)
-                        .background(LightGreen, RoundedCornerShape(4.dp))
-                )
-                Text(
-                    text = AppStrings.daysOfWeek[idx],
-                    fontSize = FontSizes.small,
-                    color = Color.Gray
-                )
-            }
-            Spacer(modifier = Modifier.width(4.dp))
-        }
-    }
-}
+fun GroceryCardPreview() {
+    val sampleProduct = Product(
+        id = 1,
+        name = "Rice",
+        totalQuantity = 25,
+        last7DaysSales = listOf(2, 3, 1, 2, 2, 3, 2),
+        predictedNextDay = 2,
+        remainingQuantity = 15,
+        stockStatus = StockStatus.STABLE,
+        remainingPercentage = 60.0,
+        imageRes = R.drawable.rice
+    )
 
-//@Preview(showBackground = true)
-//@Composable
-//fun GroceryCardPreview() {
-//    val sampleProduct = Product(
-//        id = 1,
-//        name = "Rice",
-//        totalQuantity = 25,
-//        last7DaysSales = listOf(2, 3, 1, 2, 2, 3, 2),
-//        predictedNextDay = 2,
-//        remainingQuantity = 15,
-//        stockStatus = StockStatus.STABLE,
-//        remainingPercentage = 60.0
-//    )
-//
-//    GroceryCard(item = sampleProduct)
-//}
+    GroceryCard(item = sampleProduct)
+}

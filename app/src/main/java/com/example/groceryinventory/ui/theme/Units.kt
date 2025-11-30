@@ -5,18 +5,19 @@ import androidx.compose.ui.unit.sp
 
 
 object PaddingValues {
-    val xs = 4.dp
-    val small = 8.dp
-    val medium = 12.dp
-    val large = 16.dp
-    val xl = 20.dp
+    val xs = 8.dp
+
+    val medium = 10.dp
+    val large = 12.dp
+    val xlarge = 16.dp
 }
 
 object FontSizes {
     val small = 12.sp
+    val medium2 = 16.sp
     val medium = 16.sp
-    val large = 20.sp
-    val xLarge = 24.sp
+    val large = 18.sp
+    val xLarge = 22.sp
 }
 
 object RadiusValues {
@@ -28,14 +29,15 @@ object RadiusValues {
 }
 
 object SizeValues {
-    val small=20.dp
+    val small = 20.dp
     val iconSmall = 18.dp
-    val iconMedium = 30.dp
-    val iconLarge = 35.dp
-    val imageLarge = 120.dp
+    val iconMedium = 20.dp
+    val iconLarge = 25.dp
+    val imageLarge = 60.dp
     val dividerHeight = 80.dp
     val chartBarWidth = 16.dp
 }
+
 object BadgeSizes {
     val badgeWidth = 100.dp
     val badgePaddingHorizontal = 12.dp
@@ -44,7 +46,8 @@ object BadgeSizes {
     val iconSize = 20.dp
     val spacerSmall = 4.dp
 }
-    object AppStrings {
+
+object AppStrings {
     const val searchPlaceholder = "Search groceries…"
     const val qtyAvailable = "Qty Avail: "
     const val totalQty = "Total Qty: "
@@ -55,7 +58,6 @@ object BadgeSizes {
     const val warning = "Warning"
     const val stable = "Stable"
     val daysOfWeek = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
-
 
 
 }
