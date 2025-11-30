@@ -2,6 +2,7 @@ package com.example.groceryinventory.di
 import android.content.Context
 import androidx.room.Room
 import com.example.groceryinventory.data.dataSource.localDataSource.AppDatabase
+import com.example.groceryinventory.data.dataSource.localDataSource.DataSeeder
 import com.example.groceryinventory.data.dataSource.localDataSource.ProductDao
 import dagger.Module
 import dagger.Provides
@@ -20,7 +21,7 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             "grocery_database"
-        ).build()
+        ) .fallbackToDestructiveMigration().build()
     }
 
     @Provides
@@ -29,5 +30,9 @@ object DatabaseModule {
         return database.productDao()
     }
 
-
+    @Provides
+    @Singleton
+    fun provideDataSeeder(productDao: ProductDao): DataSeeder {
+        return DataSeeder(productDao)
+    }
 }

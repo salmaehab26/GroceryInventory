@@ -20,6 +20,6 @@ fun ProductEntity.toDomain(algorithms: Algorithms): Product {
         remainingQuantity = remainingQty,
         stockStatus = status,
         remainingPercentage = remainingPercent,
-        image = image
+        imageRes = ProductImages.getImageForProduct(id)
     )
 }

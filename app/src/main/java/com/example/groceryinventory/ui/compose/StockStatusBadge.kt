@@ -25,51 +25,36 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.groceryinventory.R
 import com.example.groceryinventory.domain.model.StockStatus
-import com.example.groceryinventory.ui.theme.AppStrings
-import com.example.groceryinventory.ui.theme.BadgeSizes
-import com.example.groceryinventory.ui.theme.FontSizes
 import com.example.groceryinventory.ui.theme.Green
 import com.example.groceryinventory.ui.theme.LightGreen
 import com.example.groceryinventory.ui.theme.Yellow
 
 @Composable
 fun StockStatusBadge(status: StockStatus) {
-
-    val (color, text, image) = when (status) {
-        StockStatus.CRITICAL -> Triple(Color.Red, AppStrings.critical, R.drawable.warning)
-        StockStatus.WARNING -> Triple(Yellow, AppStrings.warning, R.drawable.caution)
-        StockStatus.STABLE -> Triple(Green, AppStrings.stable, R.drawable.check_circle)
+    val (color, text,image) = when (status) {
+        StockStatus.CRITICAL -> Triple(Color.Red, "Critical", R.drawable.warning)
+        StockStatus.WARNING -> Triple(Yellow, "Warning", R.drawable.caution)
+        StockStatus.STABLE -> Triple(Green, "Stable", R.drawable.check_circle)
     }
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .background(
-                LightGreen,
-                RoundedCornerShape(BadgeSizes.badgeRadius)
-            )
-            .padding(
-                horizontal = BadgeSizes.badgePaddingHorizontal,
-                vertical = BadgeSizes.badgePaddingVertical
-            )
-            .width(BadgeSizes.badgeWidth)
+            .background(LightGreen, RoundedCornerShape(12.dp))
+            .padding(horizontal = 12.dp, vertical = 7.dp)
+            .width(100.dp)
     ) {
-
         Image(
-            painter = painterResource(id = image),
-            contentDescription = text,
-            modifier = Modifier.size(BadgeSizes.iconSize)
+            painter = painterResource(id = R.drawable.warning),
+            contentDescription = "Warning",
+            modifier = Modifier.size(20.dp)
         )
-
-        Spacer(modifier = Modifier.width(BadgeSizes.spacerSmall))
-
+        Spacer(modifier = Modifier.width(4.dp))
         Text(
-            text = text,
-            color = color,
+            text = "Warning",
+            color = Green,
             fontWeight = FontWeight.Bold,
-            fontSize = FontSizes.medium
+            fontSize = 20.sp
         )
     }
 }
-
 

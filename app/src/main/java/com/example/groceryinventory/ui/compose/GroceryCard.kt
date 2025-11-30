@@ -1,6 +1,7 @@
 package com.example.groceryinventory.ui.compose
 
 import ads_mobile_sdk.id
+import android.hardware.biometrics.BiometricManager
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -35,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.example.groceryinventory.R
 import com.example.groceryinventory.domain.model.Product
 import com.example.groceryinventory.domain.model.StockStatus
+import com.example.groceryinventory.ui.theme.AppStrings
 import com.example.groceryinventory.ui.theme.FontSizes
 import com.example.groceryinventory.ui.theme.Green
 import com.example.groceryinventory.ui.theme.LightGreen
@@ -76,22 +78,23 @@ fun GroceryCard(item: Product) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Image(
-                    painter = painterResource(id =item.image),
+                    painter = painterResource(id =item.imageRes),
                     contentDescription = item.name,
                     modifier = Modifier
                         .size(SizeValues.imageLarge)
                         .weight(1f)
                 )
-
                 Column(
                     horizontalAlignment = Alignment.End,
                     modifier = Modifier.weight(1f)
                 ) {
                     StockStatusBadge(item.stockStatus)
+
                 }
             }
 
-            Row {
+            Row(
+            ) {
                 Column(modifier = Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
@@ -125,7 +128,6 @@ fun GroceryCard(item: Product) {
                         )
                     }
                 }
-
                 VerticalDivider(
                     thickness = DividerDefaults.Thickness,
                     color = DividerDefaults.color,
@@ -135,6 +137,7 @@ fun GroceryCard(item: Product) {
                 Spacer(modifier = Modifier.width(PaddingValues.large))
 
                 ConsumptionLineChart(item.last7DaysSales)
+
             }
 
             Spacer(modifier = Modifier.height(PaddingValues.small))
@@ -170,16 +173,16 @@ fun ConsumptionLineChart(data: List<Int>) {
     Row(verticalAlignment = Alignment.Bottom) {
         data.forEachIndexed { idx, value ->
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("$value", fontSize = 12.sp, color = Green)
+                Text("$value", fontSize = FontSizes.small , color = Green)
                 Box(
                     modifier = Modifier
-                        .width(16.dp)
+                        .width(PaddingValues.medium)
                         .height((value * 10).dp)
                         .background(LightGreen, RoundedCornerShape(4.dp))
                 )
                 Text(
-                    text = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")[idx],
-                    fontSize = 10.sp,
+                    text = AppStrings.daysOfWeek[idx],
+                    fontSize = FontSizes.small,
                     color = Color.Gray
                 )
             }

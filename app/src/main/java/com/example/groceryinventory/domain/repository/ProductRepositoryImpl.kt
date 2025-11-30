@@ -15,6 +15,8 @@ class ProductRepositoryImpl @Inject constructor(
     private val algorithms: Algorithms
 
 ) : IProductRepository {
+
+
     override suspend fun seedDataIfNeeded() {
         dataSeeder.seedInitialDataIfEmpty()
 

@@ -12,7 +12,6 @@ data class ProductEntity(
     val name: String,
     val totalQuantity: Int,
     val last7DaysSales: List<Int>,
-    val image:Int
 )
 
 class Converters {

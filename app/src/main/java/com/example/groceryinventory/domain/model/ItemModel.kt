@@ -1,5 +1,7 @@
 package com.example.groceryinventory.domain.model
 
+import androidx.annotation.DrawableRes
+
 
 data class Product(
     val id: Int,
@@ -10,5 +12,5 @@ data class Product(
     val remainingQuantity: Int,
     val stockStatus: StockStatus,
     val remainingPercentage: Double,
-    val image:Int
+   @DrawableRes val imageRes: Int
 )

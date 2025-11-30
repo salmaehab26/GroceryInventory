@@ -2,6 +2,7 @@ package com.example.groceryinventory.ui.compose
 
 import GroceryScreen
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
             val viewModel: ProductViewModel = hiltViewModel()
             val products by viewModel.products.collectAsState()
             var query by remember { mutableStateOf("") }
-
+            Log.d("MainActivity", "Products: $products")
             GroceryScreen(
                 products = products,
                 searchQuery = query,

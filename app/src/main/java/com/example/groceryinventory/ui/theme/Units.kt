@@ -21,13 +21,15 @@ object FontSizes {
 
 object RadiusValues {
     val small = 8.dp
-    val medium = 12.dp
+    val medium = 10.dp
+
     val large = 16.dp
     val xLarge = 20.dp
 }
 
 object SizeValues {
-    val iconSmall = 24.dp
+    val small=20.dp
+    val iconSmall = 18.dp
     val iconMedium = 30.dp
     val iconLarge = 35.dp
     val imageLarge = 120.dp
@@ -42,7 +44,7 @@ object BadgeSizes {
     val iconSize = 20.dp
     val spacerSmall = 4.dp
 }
-object AppStrings {
+    object AppStrings {
     const val searchPlaceholder = "Search groceries…"
     const val qtyAvailable = "Qty Avail: "
     const val totalQty = "Total Qty: "
@@ -52,6 +54,8 @@ object AppStrings {
     const val critical = "Critical"
     const val warning = "Warning"
     const val stable = "Stable"
+    val daysOfWeek = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+
 
 
 }

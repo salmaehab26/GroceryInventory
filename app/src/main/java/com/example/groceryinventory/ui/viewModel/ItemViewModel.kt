@@ -26,6 +26,10 @@ class ProductViewModel @Inject constructor(
     private val _isSortedAscending = MutableStateFlow(false)
     private val _isSortedDescending = MutableStateFlow(false)
 
+    init {
+        viewModelScope.launch {
+            repository.seedDataIfNeeded()
+        }}
     val products: StateFlow<List<Product>> = combine(
         repository.getAllProducts(),
         _searchQuery,

@@ -31,11 +31,6 @@ fun GroceryScreen(
     onSortDescending: () -> Unit
 ) {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Grocery Inventory", color = Green) }
-            )
-        },
         content = { paddingValues ->
             Column(
                 modifier = Modifier
@@ -51,11 +46,11 @@ fun GroceryScreen(
                     onSortDescending = onSortDescending
                 )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
                     contentPadding = PaddingValues(bottom = 16.dp)
                 ) {
                     items(products) { item ->
@@ -66,48 +61,3 @@ fun GroceryScreen(
         }
     )
 }
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun GroceryScreenPreview() {
-//    val sampleProducts = listOf(
-//        Product(
-//            id = 1,
-//            name = "Rice",
-//            totalQuantity = 25,
-//            last7DaysSales = listOf(2, 3, 1, 2, 2, 3, 2),
-//            predictedNextDay = 2,
-//            remainingQuantity = 15,
-//            stockStatus = StockStatus.STABLE,
-//            remainingPercentage = 60.0
-//        ),
-//        Product(
-//            id = 2,
-//            name = "Sugar",
-//            totalQuantity = 20,
-//            last7DaysSales = listOf(1, 1, 2, 1, 1, 1, 1),
-//            predictedNextDay = 1,
-//            remainingQuantity = 14,
-//            stockStatus = StockStatus.WARNING,
-//            remainingPercentage = 70.0
-//        ),
-//        Product(
-//            id = 3,
-//            name = "Milk",
-//            totalQuantity = 30,
-//            last7DaysSales = listOf(4, 5, 4, 4, 5, 4, 4),
-//            predictedNextDay = 4,
-//            remainingQuantity = 5,
-//            stockStatus = StockStatus.CRITICAL,
-//            remainingPercentage = 16.6
-//        )
-//    )
-//
-//    GroceryScreen(
-//        products = sampleProducts,
-//        searchQuery = "",
-//        onSearchChange = {},
-//        onSortAscending = {},
-//        onSortDescending = {}
-//    )
-//}
