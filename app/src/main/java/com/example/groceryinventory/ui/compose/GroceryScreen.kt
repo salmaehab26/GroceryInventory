@@ -45,12 +45,10 @@ fun GroceryScreen(
                     onSortDescending = onSortDescending
                 )
 
-                Spacer(modifier = Modifier.height(SpacerHeight10))
 
                 LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(SpacerHeight10),
-                    contentPadding = PaddingValues(bottom = xlarge)
+                    contentPadding = PaddingValues(bottom = xlarge,top=xlarge)
                 ) {
                     items(products) { item ->
                         GroceryCard(item)

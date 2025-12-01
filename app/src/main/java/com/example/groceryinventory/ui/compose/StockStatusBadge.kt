@@ -1,6 +1,8 @@
 package com.example.groceryinventory.ui.compose
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -11,12 +13,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.groceryinventory.domain.model.StockStatus
 import com.example.groceryinventory.ui.theme.FontSizes.largeFont
-import com.example.groceryinventory.ui.theme.LightGreen
 import com.example.groceryinventory.ui.theme.PaddingValues.large
 import com.example.groceryinventory.ui.theme.PaddingValues.padding5
 import com.example.groceryinventory.ui.theme.SizeValues.small
@@ -26,9 +28,10 @@ import com.example.groceryinventory.ui.theme.SizeValues.verySmall
 fun StockStatusBadge(status: StockStatus) {
 
     Row(
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-            .background(LightGreen, RoundedCornerShape(12.dp))
+            .border(1.dp,status.color, RoundedCornerShape(12.dp))
+            .background(White, RoundedCornerShape(12.dp))
             .padding(horizontal = large, vertical = padding5)
             .width(100.dp)
     ) {

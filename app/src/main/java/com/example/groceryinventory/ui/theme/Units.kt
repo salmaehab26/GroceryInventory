@@ -52,17 +52,3 @@ object SizeValues {
     val maxChartHeight = 80.dp
 }
 
-object AppStrings {
-    const val searchPlaceholder = "Search groceries…"
-    const val qtyAvailable = "Qty Avail: "
-    const val totalQty = "Total Qty: "
-    const val predicted = "Predict tomorrow selling: "
-    const val asc = "Sort Ascending"
-    const val desc = "Sort Descending"
-    const val critical = "Critical"
-    const val warning = "Warning"
-    const val stable = "Stable"
-    val daysOfWeek = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
-
-
-}

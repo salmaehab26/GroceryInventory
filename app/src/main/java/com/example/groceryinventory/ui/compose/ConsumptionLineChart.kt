@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.groceryinventory.ui.theme.AppStrings
+import com.example.groceryinventory.ui.theme.AppStrings.daysOfWeek
 import com.example.groceryinventory.ui.theme.FontSizes
 import com.example.groceryinventory.ui.theme.Green
 import com.example.groceryinventory.ui.theme.LightGreen
@@ -59,7 +60,7 @@ fun ConsumptionLineChart(
                 )
 
                 Text(
-                    text = AppStrings.daysOfWeek[idx],
+                    text = daysOfWeek[idx],
                     fontSize = FontSizes.small,
                     color = Color.Gray
                 )
