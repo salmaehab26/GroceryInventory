@@ -1,3 +1,5 @@
+package com.example.groceryinventory.ui.compose
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,16 +12,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.groceryinventory.domain.model.Product
-import com.example.groceryinventory.ui.compose.GroceryCard
-import com.example.groceryinventory.ui.compose.SearchAndSortBar
-import com.example.groceryinventory.ui.theme.Green
+import com.example.groceryinventory.ui.theme.PaddingValues.xlarge
+import com.example.groceryinventory.ui.theme.SizeValues.SpacerHeight10
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +36,7 @@ fun GroceryScreen(
                     .fillMaxSize()
                     .padding(paddingValues)
                     .background(Color.White)
-                    .padding(16.dp)
+                    .padding(xlarge)
             ) {
                 SearchAndSortBar(
                     searchQuery = searchQuery,
@@ -46,12 +45,12 @@ fun GroceryScreen(
                     onSortDescending = onSortDescending
                 )
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(SpacerHeight10))
 
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
-                    contentPadding = PaddingValues(bottom = 16.dp)
+                    verticalArrangement = Arrangement.spacedBy(SpacerHeight10),
+                    contentPadding = PaddingValues(bottom = xlarge)
                 ) {
                     items(products) { item ->
                         GroceryCard(item)

@@ -1,7 +1,5 @@
 package com.example.groceryinventory.ui.compose
 
-import CustomSearchTextField
-import GreenOutlinedButton
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -12,7 +10,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.groceryinventory.R
+import com.example.groceryinventory.ui.theme.AppStrings.asc
+import com.example.groceryinventory.ui.theme.AppStrings.desc
 import com.example.groceryinventory.ui.theme.Green
 import com.example.groceryinventory.ui.theme.PaddingValues
 import com.example.groceryinventory.ui.theme.SizeValues
@@ -58,14 +57,14 @@ fun SearchAndSortBar(
 
             ) {
                 DropdownMenuItem(
-                    text = { Text("Sort Ascending", color = Green) },
+                    text = { Text(asc, color = Green) },
                     onClick = {
                         menuExpanded = false
                         onSortAscending()
                     }
                 )
                 DropdownMenuItem(
-                    text = { Text("Sort Descending", color = Green)},
+                    text = { Text(desc, color = Green)},
                     onClick = {
                         menuExpanded = false
                         onSortDescending()

@@ -1,6 +1,7 @@
 package com.example.groceryinventory.data.mapper
 
 import com.example.groceryinventory.data.dataSource.localDataSource.ProductEntity
+import com.example.groceryinventory.data.dataSource.localDataSource.ProductImages
 import com.example.groceryinventory.domain.algorithm.Algorithms
 import com.example.groceryinventory.domain.model.Product
 

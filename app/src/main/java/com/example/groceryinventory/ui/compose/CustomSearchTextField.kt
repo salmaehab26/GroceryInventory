@@ -1,3 +1,5 @@
+package com.example.groceryinventory.ui.compose
+
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -12,9 +14,12 @@ import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.groceryinventory.R
+import com.example.groceryinventory.ui.theme.AppStrings.searchPlaceholder
 import com.example.groceryinventory.ui.theme.Green
 import com.example.groceryinventory.ui.theme.RadiusValues
 import com.example.groceryinventory.ui.theme.SizeValues
+import com.example.groceryinventory.ui.theme.SizeValues.height50
+import com.example.groceryinventory.ui.theme.SizeValues.width350
 
 @Composable
 fun CustomSearchTextField(
@@ -27,14 +32,14 @@ fun CustomSearchTextField(
         value = searchQuery,
         onValueChange = onSearchChange,
         singleLine = true,
-        placeholder = { Text("Search groceries…") },
+        placeholder = { Text(searchPlaceholder) },
         modifier = Modifier
-            .height(50.dp)
-            .width(350.dp),
+            .height(height50)
+            .width(width350),
         leadingIcon = {
             Icon(
                 painter = painterResource(id = R.drawable.search),
-                contentDescription = "Search Icon",
+                contentDescription = searchPlaceholder,
                 tint = greenColor,
                 modifier = Modifier.size(SizeValues.small)
             )

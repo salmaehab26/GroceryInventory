@@ -1,7 +1,6 @@
-package com.example.groceryinventory.data.mapper
+package com.example.groceryinventory.data.dataSource.localDataSource
 
 import androidx.annotation.DrawableRes
-import androidx.room.TypeConverter
 import com.example.groceryinventory.R
 object ProductImages {
     @DrawableRes

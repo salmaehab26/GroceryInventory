@@ -3,12 +3,14 @@ package com.example.groceryinventory.domain.algorithm
 import com.example.groceryinventory.domain.model.Product
 import com.example.groceryinventory.domain.model.StockStatus
 import javax.inject.Inject
+import kotlin.math.ceil
 
 class Algorithms @Inject constructor() {
 
     fun predictNextDay(arr: List<Int>): Int {
         if (arr.isEmpty()) return 0
-        return arr.sum() / arr.size
+        val avg = arr.sum().toDouble() / arr.size
+        return ceil(avg).toInt()
     }
 
     fun calculateRemainingQuantity(totalQuantity: Int, last7DaysSales: List<Int>): Int {
